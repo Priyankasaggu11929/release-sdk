@@ -31,8 +31,8 @@ import (
 	"github.com/go-git/go-git/v5/plumbing/object"
 	"github.com/stretchr/testify/require"
 
-	"sigs.k8s.io/release-sdk/git"
-	"sigs.k8s.io/release-sdk/git/gitfakes"
+	"github.com/Priyankasaggu11929/release-sdk/git"
+	"github.com/Priyankasaggu11929/release-sdk/git/gitfakes"
 	"sigs.k8s.io/release-utils/command"
 )
 

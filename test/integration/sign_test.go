@@ -29,7 +29,7 @@ import (
 	"github.com/sigstore/cosign/pkg/cosign"
 	"github.com/stretchr/testify/require"
 
-	"sigs.k8s.io/release-sdk/sign"
+	"github.com/Priyankasaggu11929/release-sdk/sign"
 )
 
 const (

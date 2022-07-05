@@ -28,7 +28,7 @@ import (
 	"github.com/sigstore/cosign/pkg/oci/remote"
 	"github.com/sigstore/rekor/pkg/generated/client"
 	"github.com/sirupsen/logrus"
-	"sigs.k8s.io/release-sdk/sign"
+	"github.com/Priyankasaggu11929/release-sdk/sign"
 )
 
 type FakeImpl struct {

@@ -30,8 +30,8 @@ import (
 	"github.com/sirupsen/logrus"
 	"golang.org/x/oauth2"
 
-	"sigs.k8s.io/release-sdk/git"
-	"sigs.k8s.io/release-sdk/github/internal"
+	"github.com/Priyankasaggu11929/release-sdk/git"
+	"github.com/Priyankasaggu11929/release-sdk/github/internal"
 	"sigs.k8s.io/release-utils/env"
 	"sigs.k8s.io/release-utils/util"
 )
@@ -166,6 +166,9 @@ type NewIssueOptions struct {
 // GitHub requests.
 func New() *GitHub {
 	token := env.Default(TokenEnvKey, "")
+	logrus.Debugf("Before trim, token: %s", token)
+	token = strings.TrimSpace(token)
+	logrus.Debugf("After trim, token: %s", token)
 	client, _ := NewWithToken(token) // nolint: errcheck
 	return client
 }
@@ -193,6 +196,9 @@ func NewWithToken(token string) (*GitHub, error) {
 
 func NewEnterprise(baseURL, uploadURL string) (*GitHub, error) {
 	token := env.Default(TokenEnvKey, "")
+	logrus.Debugf("Before trim, token: %s", token)
+	token = strings.TrimSpace(token)
+	logrus.Debugf("After trim, token: %s", token)
 	return NewEnterpriseWithToken(baseURL, uploadURL, token)
 }
 

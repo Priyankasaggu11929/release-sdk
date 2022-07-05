@@ -26,7 +26,7 @@ import (
 	"github.com/google/go-github/v45/github"
 	"github.com/sirupsen/logrus"
 
-	"sigs.k8s.io/release-sdk/github/internal"
+	"github.com/Priyankasaggu11929/release-sdk/github/internal"
 )
 
 func TestMain(m *testing.M) {
