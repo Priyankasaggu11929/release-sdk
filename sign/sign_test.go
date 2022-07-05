@@ -27,8 +27,8 @@ import (
 	"github.com/sigstore/cosign/pkg/oci"
 	"github.com/sigstore/cosign/pkg/oci/static"
 	"github.com/stretchr/testify/require"
-	"sigs.k8s.io/release-sdk/sign"
-	"sigs.k8s.io/release-sdk/sign/signfakes"
+	"github.com/Priyankasaggu11929/release-sdk/sign"
+	"github.com/Priyankasaggu11929/release-sdk/sign/signfakes"
 )
 
 var errTest = errors.New("error")

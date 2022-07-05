@@ -25,7 +25,7 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"sigs.k8s.io/release-sdk/gcli"
+	"github.com/Priyankasaggu11929/release-sdk/gcli"
 )
 
 type GCS struct {

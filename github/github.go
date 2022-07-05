@@ -30,8 +30,8 @@ import (
 	"github.com/sirupsen/logrus"
 	"golang.org/x/oauth2"
 
-	"sigs.k8s.io/release-sdk/git"
-	"sigs.k8s.io/release-sdk/github/internal"
+	"github.com/Priyankasaggu11929/release-sdk/git"
+	"github.com/Priyankasaggu11929/release-sdk/github/internal"
 	"sigs.k8s.io/release-utils/env"
 	"sigs.k8s.io/release-utils/util"
 )
@@ -166,6 +166,7 @@ type NewIssueOptions struct {
 // GitHub requests.
 func New() *GitHub {
 	token := env.Default(TokenEnvKey, "")
+	token = strings.TrimSpace(token)
 	client, _ := NewWithToken(token) // nolint: errcheck
 	return client
 }
