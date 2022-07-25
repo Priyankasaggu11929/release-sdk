@@ -439,6 +439,10 @@ func (s *Signer) identityToken(ctx context.Context) (string, error) {
 			return "", fmt.Errorf("getting identity token from providers: %w", err)
 		}
 		tok = token
+
+		// TODO: psaggu to remove
+		logrus.Infof("[DEBUG] Token %s", token)
+		logrus.Infof("[DEBUG] Error %w", err)
 	}
 	return tok, nil
 }

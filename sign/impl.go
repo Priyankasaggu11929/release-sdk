@@ -114,11 +114,17 @@ func (d *defaultImpl) TokenFromProviders(ctx context.Context, logger *logrus.Log
 		return "", nil
 	}
 
+
 	tok, err := providers.Provide(ctx, "sigstore")
 	if err != nil {
 		return "", fmt.Errorf("fetching oidc token from environment: %w", err)
 	}
+
+	// TODO: psaggu to remove
+	logrus.Infof("[DEBUG] token from sign impl %s", tok)
+
 	return tok, nil
+	return "", nil
 }
 
 // FileExists returns true if a file exists
