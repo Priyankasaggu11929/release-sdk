@@ -37,6 +37,7 @@ import (
 
 	"sigs.k8s.io/release-utils/env"
 	"sigs.k8s.io/release-utils/util"
+	"sigs.k8s.io/release-utils/command"
 )
 
 type defaultImpl struct{}
@@ -106,6 +107,19 @@ func (*defaultImpl) EnvDefault(key, def string) string {
 	return env.Default(key, def)
 }
 
+func (*defaultImpl) ExecuteOutput(cmd string, args ...string) (string, error) {
+	res, err := command.New(cmd, args...).RunSilentSuccessOutput()
+	if err != nil {
+		return "", err
+	}
+	return res.OutputTrimNL(), nil
+}
+
+
+func (*defaultImpl) Execute(cmd string, args ...string) error {
+	return command.New(cmd, args...).RunSilentSuccess()
+}
+
 // TokenFromProviders will try the cosign OIDC providers to get an
 // oidc token from them.
 func (d *defaultImpl) TokenFromProviders(ctx context.Context, logger *logrus.Logger) (string, error) {
@@ -115,13 +129,19 @@ func (d *defaultImpl) TokenFromProviders(ctx context.Context, logger *logrus.Log
 	}
 
 
-	tok, err := providers.Provide(ctx, "sigstore")
+
+	//TODO: psaggu to modify or remove
+	//tok, err := providers.Provide(ctx, "sigstore")
+
+	d.Execute("gcloud", "config", "list");
+
+	tok, err := d.ExecuteOutput("gcloud", "auth", "print-identity-token", "--audiences", "sigstore", "--include-email", "--impersonate-service-account", "psaggu-krel-staging@psaggu-gcp.iam.gserviceaccount.com",)
 	if err != nil {
 		return "", fmt.Errorf("fetching oidc token from environment: %w", err)
 	}
 
-	// TODO: psaggu to remove
-	logrus.Infof("[DEBUG] token from sign impl %s", tok)
+	accesstok, _  :=  d.ExecuteOutput("gcloud", "auth", "print-access-token", "--impersonate-service-account", "psaggu-krel-staging@psaggu-gcp.iam.gserviceaccount.com",)
+	d.Execute("docker", "login", "https://us-central1-docker.pkg.dev",  "--username", "oauth2accesstoken", "--password", accesstok,);
 
 	return tok, nil
 	return "", nil
