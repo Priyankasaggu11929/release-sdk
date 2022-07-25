@@ -47,7 +47,9 @@ import (
 const (
 	// DefaultGithubOrg is the default GitHub org used for Kubernetes project
 	// repos
-	DefaultGithubOrg = "Priyankasaggu11929"
+	//TODO: psaggu
+	//DefaultGithubOrg = "Priyankasaggu11929"
+	DefaultGithubOrg = "kubernetes"
 
 	// DefaultGithubRepo is the default git repository
 	DefaultGithubRepo = "kubernetes"
