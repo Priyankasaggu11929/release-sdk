@@ -1,4 +1,4 @@
-module sigs.k8s.io/release-sdk
+module github.com/Priyankasaggu11929/release-sdk
 
 go 1.18
 
@@ -16,6 +16,7 @@ require (
 	github.com/stretchr/testify v1.8.0
 	golang.org/x/oauth2 v0.0.0-20221006150949-b44042a4b9c1
 	k8s.io/apimachinery v0.25.3
+	sigs.k8s.io/release-sdk v0.9.3
 	sigs.k8s.io/release-utils v0.7.3
 )
 
