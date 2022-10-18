@@ -23,7 +23,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/google/go-github/v45/github"
+	"github.com/google/go-github/v47/github"
 	"github.com/sirupsen/logrus"
 
 	"github.com/Priyankasaggu11929/release-sdk/github/internal"
